@@ -6,4 +6,15 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-bevy = "0.8.0"
+#remove dynamic if want to distribute indpendent executable
+bevy = { version = "0.8.0", features = ["dynamic"] }
+
+
+### Suggestions from Bevy book (https://bevyengine.org/learn/book/getting-started/setup/)
+# Enable a small amount of optimization in debug mode
+[profile.dev]
+opt-level = 1
+
+# Enable high optimizations for dependencies (incl. Bevy), but not for our code:
+[profile.dev.package."*"]
+opt-level = 3
